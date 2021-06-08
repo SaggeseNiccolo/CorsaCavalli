@@ -1,20 +1,23 @@
 package com.mycompany.corsacavalli;
 
+import static com.mycompany.corsacavalli.NewMain.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
 import javax.imageio.*;
 import javax.swing.*;
 
 /**
+ * Classe che serve a gestire la gara tra i cavalli
  *
  * @author informatica
  */
 public class GaraCavalli implements ActionListener, KeyListener {
 
-    private final JFrame frame;
+    public static JFrame frame;
     private final JLayeredPane panel;
 
     //JTextField che rappresentano le corsie graficamente
@@ -45,7 +48,8 @@ public class GaraCavalli implements ActionListener, KeyListener {
     private final JButton avvia;
     private final JLabel info;
 
-    public static boolean run = false;
+    //ArrayList dove verranno inserite le posizioni dei cavalli in ordine
+    public static ArrayList<Integer> posizione = new ArrayList<>();
 
     public GaraCavalli() throws IOException {
 
@@ -101,7 +105,7 @@ public class GaraCavalli implements ActionListener, KeyListener {
         frame.setResizable(false);
         frame.getRootPane().setDefaultButton(avvia);
         frame.pack();
-        frame.setLocationRelativeTo(null);
+        frame.setLocation(SceltaCavalli.frame.getLocation());
         frame.setVisible(true);
 
         creaCorsie(); //creo le corsie
@@ -689,6 +693,17 @@ public class GaraCavalli implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        c1 = new Thread(new Cavallo(GaraCavalli.cavallo1, 1));
+        c2 = new Thread(new Cavallo(GaraCavalli.cavallo2, 2));
+        c3 = new Thread(new Cavallo(GaraCavalli.cavallo3, 3));
+        c4 = new Thread(new Cavallo(GaraCavalli.cavallo4, 4));
+        c5 = new Thread(new Cavallo(GaraCavalli.cavallo5, 5));
+        c6 = new Thread(new Cavallo(GaraCavalli.cavallo6, 6));
+        c7 = new Thread(new Cavallo(GaraCavalli.cavallo7, 7));
+        c8 = new Thread(new Cavallo(GaraCavalli.cavallo8, 8));
+        c9 = new Thread(new Cavallo(GaraCavalli.cavallo9, 9));
+        c10 = new Thread(new Cavallo(GaraCavalli.cavallo10, 10));
+
         if (info.isVisible()) {
 
             info.setVisible(false);
@@ -800,6 +815,7 @@ public class GaraCavalli implements ActionListener, KeyListener {
 
     }
 
+    //metodi sovrascritti dall'implementazione KeyListener
     @Override
     public void keyTyped(KeyEvent e) {
     }

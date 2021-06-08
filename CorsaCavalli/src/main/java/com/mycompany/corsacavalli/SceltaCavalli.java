@@ -2,18 +2,18 @@ package com.mycompany.corsacavalli;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.*;
+import java.util.logging.*;
 import javax.swing.*;
 
 /**
+ * Classe che serve a gestire la scelta dei cavalli in gara
  *
  * @author informatica
  */
 public class SceltaCavalli implements ActionListener {
 
-    private final JFrame frame;
+    public static JFrame frame;
     private final JPanel panel;
     private final JLabel label;
     private final JComboBox combo;
@@ -27,7 +27,7 @@ public class SceltaCavalli implements ActionListener {
 
         label = new JLabel("Scegliere il numero di cavalli");
         label.setBounds(220, 180, 480, 30);
-        label.setFont(new Font("Itim", Font.BOLD, 18));
+        label.setFont(new Font("Itim", Font.BOLD, 18)); //cambio il font della label
 
         String[] i = {"2", "3", "4", "5", "6", "7", "8", "9", "10"};
         combo = new JComboBox(i);
@@ -68,7 +68,7 @@ public class SceltaCavalli implements ActionListener {
         frame.dispose(); //serve per chiudere la finestra per la scelta dei cavalli
 
         try {
-            new GaraCavalli();
+            new GaraCavalli(); //apro la finestra per la corsa dei cavalli
         } catch (IOException ex) {
             Logger.getLogger(SceltaCavalli.class.getName()).log(Level.SEVERE, null, ex);
         }
